@@ -1,7 +1,11 @@
 <?php
-    $host = "localhost";
-    $user = "sa";
-    $pass = "Cle12!@#";
-    $banco = "LISTA_SP_AD";
-    $conexao = mssql_connect($host, $user, $pass) or die(mssql_get_last_message());
-    //mssql_select_db($banco) or die (mssql_get_last_message());
+$host = "192.168.10.100";
+$user = "sa";
+$pass = "Lu01ccas";
+$banco = "DPP_FIN";
+$conexao = new PDO ("dblib:host=" . $host . ";dbname=" . $banco . ";charset=utf8;", $user, $pass);
+if($conexao)
+    echo "Conectado com sucesso!";
+else
+    echo "Falha na conexão!";
+?>
