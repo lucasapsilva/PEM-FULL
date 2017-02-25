@@ -37,15 +37,28 @@
 </nav>
 
 <div class="jumbotron">
-    <div class="container">
-        <div class="row">
-            <div id="pais">
-                <select id="cmbPais">
-                </select>
-            </div>
+
+    <div class="row col-md-12">
+        <div id="modal" class="col-md-2">
+            <select id="cmbModal">
+            </select>
+        </div>
+        <div id="regiao" class="col-md-2">
+            <select id="cmbRegiao">
+            </select>
+        </div>
+        <div id="uf" class="col-md-2">
+            <select id="cmbUF">
+            </select>
+        </div>
+
+        <div id="pais" class="col-md-5">
+            <select id="cmbPais">
+            </select>
         </div>
     </div>
 </div>
+
 <div class="row col-md-12">
     <div class="col-md-3">
         <label>Qtd Lotes</label>

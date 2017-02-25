@@ -2,17 +2,35 @@
 require_once('db.php');
 $empreendimento = isset($_GET['opcao']) ? $_GET['opcao'] : '';
 $valor = isset($_GET['valor']) ? $_GET['valor'] : '';
-
-
+$modal = isset($_GET['modal']) ? $_GET['modal'] : '';
+$regiao = isset($_GET['regiao']) ? $_GET['regiao'] : '';
+$uf = isset($_GET['uf']) ? $_GET['uf'] : '';
 
 if (! empty($empreendimento)){
     switch ($empreendimento)
     {
         case 'empreendimentos':
         {
-            echo getEmpreendimentos();
+            echo getEmpreendimentos($modal, $regiao, $uf);
             break;
         }
+        case 'modal':
+        {
+            echo getModal();
+            break;
+        }
+        case 'regiao':
+        {
+            echo getRegiao($valor);
+            break;
+        }
+
+        case 'uf':
+        {
+            echo getUF($modal, $regiao);
+            break;
+        }
+
         case 'empreendimento':
         {
             echo getFilterEmpreendimento($valor);
@@ -21,11 +39,50 @@ if (! empty($empreendimento)){
     }
 }
 
-function getEmpreendimentos(){
+function getEmpreendimentos($mod, $ref, $uf){
     $pdo = Conectar();
-    $sql = 'select distinct(TITLE) as empreendimento
+    $sql = "select distinct(TITLE) as empreendimento
             from LISTA_SP_AD.dbo.TB_PWA_DPP_CADASTRO_EMPREENDIMENTOS 
-            order by TITLE asc';
+            where MODAL_EMPREENDIMENTO = '$mod'
+            and   REGIAO_EMPREENDIMENT = '$ref'
+            and   UF_EMPREENDIMENTO    = '$uf'
+            order by TITLE asc";
+    $stm = $pdo->prepare($sql);
+    $stm->execute();
+    echo json_encode($stm->fetchAll(PDO::FETCH_ASSOC));
+    $pdo = null;
+}
+
+function getModal(){
+    $pdo = Conectar();
+    $sql = 'select distinct(MODAL_EMPREENDIMENTO) as modal
+            from LISTA_SP_AD.dbo.TB_PWA_DPP_CADASTRO_EMPREENDIMENTOS 
+            order by MODAL_EMPREENDIMENTO asc';
+    $stm = $pdo->prepare($sql);
+    $stm->execute();
+    echo json_encode($stm->fetchAll(PDO::FETCH_ASSOC));
+    $pdo = null;
+}
+
+function getRegiao($val){
+    $pdo = Conectar();
+    $sql = "select distinct(REGIAO_EMPREENDIMENT) regiao
+            from LISTA_SP_AD.dbo.TB_PWA_DPP_CADASTRO_EMPREENDIMENTOS
+            where MODAL_EMPREENDIMENTO = '$val'
+            order by REGIAO_EMPREENDIMENT asc";
+    $stm = $pdo->prepare($sql);
+    $stm->execute();
+    echo json_encode($stm->fetchAll(PDO::FETCH_ASSOC));
+    $pdo = null;
+}
+
+function getUf($mod, $reg){
+    $pdo = Conectar();
+    $sql = "select distinct(UF_EMPREENDIMENTO) uf
+            from LISTA_SP_AD.dbo.TB_PWA_DPP_CADASTRO_EMPREENDIMENTOS
+            where MODAL_EMPREENDIMENTO = '$mod'
+            and   REGIAO_EMPREENDIMENT = '$reg'
+            order by UF_EMPREENDIMENTO asc";
     $stm = $pdo->prepare($sql);
     $stm->execute();
     echo json_encode($stm->fetchAll(PDO::FETCH_ASSOC));

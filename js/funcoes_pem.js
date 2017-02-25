@@ -1,15 +1,83 @@
 $(document).ready(function(){
-    <!-- Carrega os Empreendimentos -->
-    createDropdownListEmprendimentos();
-    <!-- Carrega os Estados -->
+    dadosModal();
+    $('#cmbModal').change(function(e){
+        dadosRegiao();
+    });
+
+    $('#cmbRegiao').change(function(e){
+        dadosUf();
+    });
+
+    $('#cmbUF').change(function(e){
+        createDropdownListEmprendimentos();
+    });
+
     $('#cmbPais').change(function(e){
         dadosEmpreendimento();
     });
 
 });
 
+
+function dadosModal() {
+    $.getJSON('conexao/consulta.php?opcao=modal', function (dados){
+        if (dados.length > 0){
+            var option = '';
+            $.each(dados, function(i, obj){
+                option += '<option value="'+obj.MODAL+'">'+obj.MODAL+'</option>';
+            });
+            $('#cmbModal').html(option);
+            dadosRegiao();
+        }else{
+            Reset();
+            $('#mensagem').html('<span class="mensagem">Não foram encontrados modais!</span>');
+        }
+    });
+}
+
+function dadosRegiao() {
+    var regiao = $('#cmbModal').val();
+    $.getJSON('conexao/consulta.php?opcao=regiao&valor='+regiao, function (dados){
+        if (dados.length > 0){
+            var option = '';
+            $.each(dados, function(i, obj){
+                option += '<option value="'+obj.REGIAO+'">'+obj.REGIAO+'</option>';
+            });
+            $('#cmbRegiao').html(option);
+            dadosUf();
+        }else{
+            Reset();
+            $('#mensagem').html('<span class="mensagem">Não foram encontrados regiao!</span>');
+        }
+    })
+}
+
+
+function dadosUf() {
+    var modal = $('#cmbModal').val();
+    var regiao = $('#cmbRegiao').val();
+    $.getJSON('conexao/consulta.php?opcao=uf&modal='+modal+'&regiao='+regiao, function (dados){
+        if (dados.length > 0){
+            var option = '';
+            $.each(dados, function(i, obj){
+                option += '<option value="'+obj.UF+'">'+obj.UF+'</option>';
+            });
+            $('#cmbUF').html(option);
+            createDropdownListEmprendimentos();
+        }else{
+            Reset();
+            $('#mensagem').html('<span class="mensagem">Não foram encontrados regiao!</span>');
+        }
+    })
+}
+
+
+
 function createDropdownListEmprendimentos() {
-    $.getJSON('conexao/consulta.php?opcao=empreendimentos', function (dados){
+    var modal = $('#cmbModal').val();
+    var regiao = $('#cmbRegiao').val();
+    var uf = $('#cmbUF').val();
+    $.getJSON('conexao/consulta.php?opcao=empreendimentos&modal='+modal+'&regiao='+regiao+'&uf='+uf, function (dados){
         if (dados.length > 0){
             var option = '';
             $.each(dados, function(i, obj){
@@ -23,6 +91,8 @@ function createDropdownListEmprendimentos() {
         }
     });
 }
+
+
 
 function dadosEmpreendimento() {
     var pais = $('#cmbPais').val();
