@@ -1,120 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <title>Bootstrap Example</title>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+        /* Remove the navbar's default margin-bottom and rounded borders */
+        .navbar {
+            margin-bottom: 0;
+            border-radius: 0;
+        }
 
-    <title>DNIT | PEM</title>
-
-    <!-- Bootstrap Core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- MetisMenu CSS -->
-    <link href="vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
-    <link href="dist/css/sb-admin-2.css" rel="stylesheet">
-
-    <!-- Morris Charts CSS -->
-    <link href="vendor/morrisjs/morris.css" rel="stylesheet">
-
-    <!-- Custom Fonts -->
-    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
+        /* Add a gray background color and some padding to the footer */
+        footer {
+            background-color: #f2f2f2;
+            padding: 25px;
+        }
+    </style>
 </head>
-
 <body>
 
-<div id="wrapper">
-
-    <!-- Navigation -->
-    <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="sr-only">Toggle navigation</span>
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="index.html">DNIT | PEM</a>
+            <a class="navbar-brand" href="#">DNIT | PEM</a>
         </div>
-        <!-- /.navbar-top-links -->
-
-        <div class="navbar-default sidebar" role="navigation">
-            <div class="sidebar-nav navbar-collapse">
-                <ul class="nav" id="side-menu">
-                    <li>
-                        <a href="#"><i class="fa fa-sitemap fa-fw"></i> DNIT | PEM<span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li>
-                                <a href="#" id="Lotes">Lotes</a>
-                            </li>
-                            <li>
-                                <a href="#" id="Consultas">Consultas</a>
-                            </li>
-                            <li>
-                                <a href="conexao/db.php" >Conexão</a>
-                            </li>
-
-                        </ul>
-                        <!-- /.nav-second-level -->
-                    </li>
-                </ul>
-            </div>
-            <!-- /.sidebar-collapse -->
-        </div>
-        <!-- /.navbar-static-side -->
-    </nav>
-
-    <div id="page-wrapper">
-
-        <!-- /.row -->
     </div>
-    <!-- /#page-wrapper -->
+</nav>
+
+<div class="jumbotron">
+    <div class="container">
+        <div class="row">
+            <div id="pais">
+                <select id="cmbPais">
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row col-md-12">
+    <div class="col-md-3">
+        <label>Qtd Lotes</label>
+        <p id="lbLotes"></p>
+    </div>
+    <div class="col-md-3">
+        <label>km</label>
+        <p id="lbKm"></p>
+    </div>
+    <div class="col-md-3">
+        <label>Medida Impositiva</label>
+        <p id="lbImpositiva"></p>
+    </div>
+    <div class="col-md-3">
+        <label>Carteira PAC</label>
+        <p id="lbPAC"></p>
+    </div>
+</div>
+<div class="row col-md-12">
+    <div class="col-md-2">
+        <label>Codigo</label>
+        <p id="lbCodigo"></p>
+    </div>
+    <div class="col-md-2">
+        <label>Data Inicio</label>
+        <p id="lbInicio"></p>
+    </div>
+    <div class="col-md-2">
+        <label>Data Termino</label>
+        <p id="lbTermino"></p>
+    </div>
+    <div class="col-md-2">
+        <label>Natureza</label>
+        <p id="lbNatureza"></p>
+    </div>
+    <div class="col-md-2">
+        <label>Fase</label>
+        <p id="lbFase"></p>
+    </div>
+    <div class="col-md-2">
+        <label>Situacao</label>
+        <p id="lbSituacao"></p>
+    </div>
 
 </div>
-<!-- /#wrapper -->
 
-<!-- jQuery -->
-<script src="vendor/jquery/jquery.min.js"></script>
+<label>Comentários</label>
+<div id="lbResumo"></div>
 
-<!-- Bootstrap Core JavaScript -->
-<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
 
-<!-- Metis Menu Plugin JavaScript -->
-<script src="vendor/metisMenu/metisMenu.min.js"></script>
+<label>Valor GEPAC</label>
+<div id="lbGepac"></div>
+<label>Valor Contrato Obra</label>
+<div id="lbContrato"></div>
+<label>Valor Medido</label>
+<div id="lbValor"></div>
+<label>Valor Empenhado</label>
+<div id="lbEmpenho"></div>
+<label>Saldo a Empenhar</label>
+<div id="lbSaldo"></div>
 
-<!-- Morris Charts JavaScript -->
-<script src="vendor/raphael/raphael.min.js"></script>
-<script src="vendor/morrisjs/morris.min.js"></script>
-<script src="data/morris-data.js"></script>
 
-<!-- Custom Theme JavaScript -->
-<script src="dist/js/sb-admin-2.js"></script>
-
+<footer class="main-footer">
+    <div class="pull-right hidden-xs">
+        <b>Versão</b> 1.0
+    </div>
+    <strong>PEM © <?php echo date('Y'); ?>.</strong> DNIT - Departamento Nacional de Infraestrutura de Transportes.
+</footer>
+<script src="js/funcoes_pem.js"></script>
 </body>
-
 </html>
-
-<script>
-    $("#Lotes").click(function(){
-        $.ajax({url: "nav/pemLotes.php", success: function(result){
-            $("#page-wrapper").html(result);
-        }});
-    });
-
-    $("#Consultas").click(function(){
-        $.ajax({url: "nav/pemConsultas.php", success: function(result){
-            $("#page-wrapper").html(result);
-        }});
-    });
-</script>
