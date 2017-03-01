@@ -41,100 +41,97 @@
 </nav>
 
 <div class="jumbotron">
-    <div class="row">
-        <div class="col-md-2">
-            <div class="form-group">
-                <label>Modal</label>
-                <select class="form-control select2" id="cmbModal" style="width: 100%;">
-                </select>
+    <div class="box-body">
+        <div class="row">
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label>Modal</label>
+                    <select class="form-control select2" id="cmbModal" style="width: 100%;">
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label>Região</label>
+                    <select class="form-control select2" id="cmbRegiao" style="width: 100%;">
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label>UF</label>
+                    <select class="form-control select2" id="cmbUF" style="width: 100%;">
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Empreendimento</label>
+                    <select class="form-control select2" id="cmbPais" style="width: 100%;">
+                    </select>
+                </div>
             </div>
         </div>
-        <div class="col-md-2">
-            <div class="form-group">
-                <label>Região</label>
-                <select class="form-control select2" id="cmbRegiao" style="width: 100%;">
-                </select>
+        <div class="row">
+            <table class="table table-bordered">
+                <tr>
+                    <th class="col-md-4" style="text-align: center; background-color: #1d75b3; color: white;"><p id="lbLotes"></p></th>
+                    <th class="col-md-4" style="text-align: center; background-color: #1d75b3; color: white;"><p id="lbKm"></p></th>
+                    <th class="col-md-2" style="text-align: center; background-color: #1d75b3; color: white;"><p id="lbImpositiva"></p></th>
+                    <th class="col-md-2" style="text-align: center; background-color: #00a198; color: white;"><p id="lbPAC"></p></th>
+                </tr>
+            </table>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6"><b>Código: </b> <i id="lbCodigo"></i></div>
+                    <div class="col-md-6"><b>Início: </b> <i id="lbInicio"></i></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6"><b>Natureza: </b> <i id="lbNatureza"></i></div>
+                    <div class="col-md-6"><b>Conclusão: </b> <i id="lbTermino"></i></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6"><b>Fase: </b> <i id="lbFase"></i></div>
+                    <div class="col-md-6"><b>Situação: </b> <i id="lbSituacao"></i></div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-2">Estudos</div>
+                    <div class="col-md-2">Planejamento</div>
+                    <div class="col-md-2">Projeto</div>
+                    <div class="col-md-2">Ambiental</div>
+                    <div class="col-md-2">Desapropriaçao</div>
+                    <div class="col-md-2">Reassentamento</div>
+                </div>
+                <br>
+                <div class="row">
+                    <a href="#"> <span class="col-md-2 glyphicon glyphicon-info-sign"></span></a>
+                    <a href="#"><span class="col-md-2 glyphicon glyphicon-info-sign"></span></a>
+                    <a href="#"><span class="col-md-2 glyphicon glyphicon-info-sign"></span></a>
+                    <a href="#"><span class="col-md-2 glyphicon glyphicon-info-sign"></span></a>
+                    <a href="#"><span class="col-md-2 glyphicon glyphicon-info-sign"></span></a>
+                    <a href="#"> <span class="col-md-2 glyphicon glyphicon-info-sign"></span></a>
+                </div>
             </div>
         </div>
-        <div class="col-md-2">
-            <div class="form-group">
-                <label>UF</label>
-                <select class="form-control select2" id="cmbUF" style="width: 100%;">
-                </select>
-            </div>
+        <br>
+        <div class="row table-bordered" style="text-align: center;">
+            <b>Comentários</b>
+            <br>
+            <i id="lbResumo"></i>
         </div>
-        <div class="col-md-6">
-            <div class="form-group">
-                <label>Empreendimento</label>
-                <select class="form-control select2" id="cmbPais" style="width: 100%;">
-                </select>
-            </div>
+        <div class="row">
+            <div class="col-md-6" id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+            <div class="col-md-6" id="container2" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
         </div>
-    </div>
-    <div class="row">
-        <table class="table table-bordered col-md-12">
-            <tr>
-                <th class="col-md-4" style="text-align: center; background-color: #1d75b3; color: white;"><p id="lbLotes"></p></th>
-                <th class="col-md-4" style="text-align: center; background-color: #1d75b3; color: white;"><p id="lbKm"></p></th>
-                <th class="col-md-2" style="text-align: center; background-color: #1d75b3; color: white;"><p id="lbImpositiva"></p></th>
-                <th class="col-md-2" style="text-align: center; background-color: #00a198; color: white;"><p id="lbPAC"></p></th>
-            </tr>
-        </table>
-    </div>
-    <div class="row col-md-12">
-        <table class="table table-bordered">
-            <tr>
-                <label class="col-md-3" style="text-align: left">Código: <p id="lbCodigo"></p></label>
-                <label class="col-md-3" style="text-align: right">Natureza: <p id="lbNatureza"></p></label>
-            </tr>
-        </table>
     </div>
 </div>
 
-<div class="row col-md-12">
-    <div class="col-md-2">
-        <label>Codigo</label>
-        <p id="lbCodigo"></p>
-    </div>
-    <div class="col-md-2">
-        <label>Data Inicio</label>
-        <p id="lbInicio"></p>
-    </div>
-    <div class="col-md-2">
-        <label>Data Termino</label>
-        <p id="lbTermino"></p>
-    </div>
-    <div class="col-md-2">
-        <label>Natureza</label>
-        <p id="lbNatureza"></p>
-    </div>
-    <div class="col-md-2">
-        <label>Fase</label>
-        <p id="lbFase"></p>
-    </div>
-    <div class="col-md-2">
-        <label>Situacao</label>
-        <p id="lbSituacao"></p>
-    </div>
-
-</div>
-
-<label>Comentários</label>
-<div id="lbResumo"></div>
 
 
-<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
-
-<label>Valor GEPAC</label>
-<div id="lbGepac"></div>
-<label>Valor Contrato Obra</label>
-<div id="lbContrato"></div>
-<label>Valor Medido</label>
-<div id="lbValor"></div>
-<label>Valor Empenhado</label>
-<div id="lbEmpenho"></div>
-<label>Saldo a Empenhar</label>
-<div id="lbSaldo"></div>
 
 
 <footer class="main-footer">

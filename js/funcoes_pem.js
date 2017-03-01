@@ -16,10 +16,6 @@ $(document).ready(function(){
         dadosEmpreendimento();
     });
 
-    $('#container').change(function(e){
-        graficoBarra();
-    });
-
 });
 
 
@@ -128,11 +124,13 @@ function dadosEmpreendimento() {
             $("#lbFase").html(dados[0].FASE);
             $("#lbSituacao").html(dados[0].SITUACAO);
             $("#lbResumo").html(dados[0].RESUMO);
-            $("#lbGepac").html(dados[0].VALOR_GEPAC);
-            $("#lbContrato").html(dados[0].CONTRATO_OBRA);
-            $("#lbValor").html(dados[0].VALOR_MEDIDO);
-            $("#lbEmpenho").html(dados[0].VALOR_EMPENHADO);
-            $("#lbSaldo").html(dados[0].SALDO_A_EMPENHAR);
+            var valor_gepac = dados[0].VALOR_GEPAC;
+            var valor_contrato = dados[0].CONTRATO_OBRA;
+            var valor_medido = dados[0].VALOR_MEDIDO;
+            var valor_empenhado = dados[0].VALOR_EMPENHADO;
+            var saldo_empenhar = dados[0].SALDO_A_EMPENHAR;
+            graficoBarra(valor_gepac, valor_contrato);
+            graphPie (valor_medido,valor_empenhado,saldo_empenhar);
         }
     })
 }
@@ -141,7 +139,18 @@ function Reset(){
     $('#cmbPais').empty().append('<option>Carregar Países</option>>');
 }
 
-function graficoBarra() {
+function FormataNumeroTooltip() {
+    if (this.y != 0) {
+        var valor = this.y.toFixed(2).replace(/\d(?=(?:\d{3})+(?:\D|$))/g, "$&,").replace(".", "-");
+        while (valor.indexOf(",") >= 0) {
+            valor = valor.replace(",", ".");
+        }
+        valor = valor.replace("-", ",");
+        return '<span style=\"font-size: 8px\">' + this.series.name + '</span> <br/> <span style=\"font-weight: bold; color: ' + this.point.color + ' \"> ' + this.point.name + '</span>: <b>' + valor + '</b>';
+    }
+}
+
+function graficoBarra(valor_gepac, valor_contrato) {
     // Create the chart
     Highcharts.chart(
         'container',
@@ -162,12 +171,6 @@ function graficoBarra() {
                 allowDecimals: false,
                 title: {
                     text: 'Valor em R$'
-                }
-            },
-            tooltip: {
-                formatter: function() {
-                    return '<b>'+ this.series.name +'</b><br/>'+
-                        'R$'+ this.y.toFixed(2).replace(".",",");
                 }
             },
             legend : {
@@ -197,18 +200,61 @@ function graficoBarra() {
                 colorByPoint : true,
                 data : [ {
                     name : 'Valor GEPAC',
-                    y : 188.6
+                    y : valor_gepac
                 }, {
                     name : 'Valor Contrato',
-                    y : 161.3
+                    y : valor_contrato
 
-                },
-                    {
-                        name : 'Loa Vigente',
-                        y : 10.0
-                    }
-
-                ]
+                }]
             } ]
         });
-    };
+};
+
+
+
+function graphPie (valor_medido,valor_empenhado,saldo_empenhar) {
+    Highcharts.chart('container2', {
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: 0,
+            plotShadow: false,
+            borderColor: '#CFCFCF',
+            borderWidth: 1
+        },
+        title: {
+            text: 'Medição'
+        },
+        tooltip: {
+            formatter: FormataNumeroTooltip,
+            shared: true
+        },
+        plotOptions: {
+            pie: {
+                dataLabels: {
+                    distance: -10,
+                    enabled: false,
+                    style: {
+                        fontWeight: 'bold',
+                        color: 'white'
+                    }
+                },
+                showInLegend: true
+            }
+        },
+        credits : {
+            enabled : false
+        },
+        exporting : {
+            enabled : false
+        },
+        series: [{
+            type: 'pie',
+            name: 'Valor em R$:',
+            innerSize: '70%',
+            data: [['Valor Medido', valor_medido],
+                ['Valor Empenhado', valor_empenhado],
+                ['Saldo a Empenhar', saldo_empenhar]
+            ]
+        }]
+    });
+};
