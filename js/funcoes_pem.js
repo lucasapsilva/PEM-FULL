@@ -16,6 +16,10 @@ $(document).ready(function(){
         dadosEmpreendimento();
     });
 
+    $('#container').change(function(e){
+        graficoBarra();
+    });
+
 });
 
 
@@ -98,6 +102,21 @@ function dadosEmpreendimento() {
     var pais = $('#cmbPais').val();
     $.getJSON('conexao/consulta.php?opcao=empreendimento&valor='+pais, function (dados){
         if (dados.length > 0){
+            if  (dados[0].QTD_LOTES == 1)
+                dados[0].QTD_LOTES = dados[0].QTD_LOTES + ' Lote';
+            else
+                dados[0].QTD_LOTES =  dados[0].QTD_LOTES + ' Lotes';
+
+            if  (dados[0].MEDIDA_IMPOSITIVA == "Sim")
+                dados[0].MEDIDA_IMPOSITIVA = 'MEDIDA IMPOSITIVA';
+            else
+                dados[0].MEDIDA_IMPOSITIVA = 'SEM MEDIDA IMPOSITIVA';
+
+            if  (dados[0].PAC == "Sim")
+                dados[0].PAC = 'CARTEIRA PAC';
+            else
+                dados[0].PAC = 'CARTEIRA DEMAIS';
+
             $("#lbKm").html(dados[0].KM);
             $("#lbLotes").html(dados[0].QTD_LOTES);
             $("#lbImpositiva").html(dados[0].MEDIDA_IMPOSITIVA);
@@ -109,7 +128,6 @@ function dadosEmpreendimento() {
             $("#lbFase").html(dados[0].FASE);
             $("#lbSituacao").html(dados[0].SITUACAO);
             $("#lbResumo").html(dados[0].RESUMO);
-
             $("#lbGepac").html(dados[0].VALOR_GEPAC);
             $("#lbContrato").html(dados[0].CONTRATO_OBRA);
             $("#lbValor").html(dados[0].VALOR_MEDIDO);
@@ -122,3 +140,75 @@ function dadosEmpreendimento() {
 function Reset(){
     $('#cmbPais').empty().append('<option>Carregar Países</option>>');
 }
+
+function graficoBarra() {
+    // Create the chart
+    Highcharts.chart(
+        'container',
+        {
+            chart : {
+                type : 'column',
+                borderColor: '#CFCFCF',
+                borderWidth: 1
+            },
+            //colors: ['#BDBDBD','#5882FA'],
+            title : {
+                text : 'Financeiro'
+            },
+            xAxis : {
+                type : 'category'
+            },
+            yAxis: {
+                allowDecimals: false,
+                title: {
+                    text: 'Valor em R$'
+                }
+            },
+            tooltip: {
+                formatter: function() {
+                    return '<b>'+ this.series.name +'</b><br/>'+
+                        'R$'+ this.y.toFixed(2).replace(".",",");
+                }
+            },
+            legend : {
+                enabled : false
+            },
+            plotOptions : {
+                series : {
+                    borderWidth : 0,
+                    dataLabels : {
+                        enabled : true,
+                        format : 'R$ {point.y:,.2f}'
+                    }
+                }
+            },
+            tooltip : {
+                headerFormat : '<span style="font-size:11px">{series.name}</span><br>',
+                pointFormat : '<span style="color:{point.color}">{point.name}</span>: <b>R${point.y:,.2f}</b><br/>'
+            },
+            credits : {
+                enabled : false
+            },
+            exporting : {
+                enabled : false
+            },
+            series : [ {
+                name : 'Planejamento',
+                colorByPoint : true,
+                data : [ {
+                    name : 'Valor GEPAC',
+                    y : 188.6
+                }, {
+                    name : 'Valor Contrato',
+                    y : 161.3
+
+                },
+                    {
+                        name : 'Loa Vigente',
+                        y : 10.0
+                    }
+
+                ]
+            } ]
+        });
+    };
