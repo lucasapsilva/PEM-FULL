@@ -117,7 +117,7 @@
                 <div class="panel panel-default">
 
                     <div class="panel-heading">
-                        <b></b>
+                        <b>Detalhamento</b>
                     </div>
                     <div class="panel-body">
                         <div class="row">
@@ -184,15 +184,10 @@
                                         <div class="panel-heading"><b>Comentários</b></div>
                                         <div class="panel-body"><font id="lbResumo"></font></div>
                                     </div>
-                                    <br><br>
-                                    <div class="row">
-
-
-                                    </div>
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <div class="col-md-12" id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+                                <div class="col-md-12" id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div><br><br>
                                 <div class="col-md-12" id="container2" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
                             </div>
 
