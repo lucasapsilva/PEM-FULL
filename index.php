@@ -6,6 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="vendor/bootstrap/css/custom.css">
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="dist/css/sb-admin-2.css" rel="stylesheet">
+
+    <!-- Morris Charts CSS -->
+    <link href="vendor/morrisjs/morris.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
     <script src="vendor/highcharts/highcharts.js"></script>
@@ -44,7 +57,7 @@
         <div class="col-lg-12">
             <div class="panel panel-primary">
                 <div class="panel-heading">
-                    <b>Texto a escolha</b>
+                    <b>Seleção de empreendimentos</b>
                 </div>
                 <div class="panel-body">
                     <div class="row">
@@ -82,86 +95,128 @@
                 <!-- /.panel-body -->
             </div>
             <!-- /.panel -->
-
-            <div class="row">
-                <div class="col-md-12">
-                    <table class="table table-bordered table-responsive">
-                        <tr>
-                            <th class="col-md-4" style="text-align: center; background-color: #1d75b3; color: white;">
-                                <a href="#demo" data-target="#demo">
-                                    <p id="lbLotes" style="color: white;"></p></a></th>
-                            <th class="col-md-4" style="text-align: center; background-color: #1d75b3; color: white;"><p id="lbKm"></p></th>
-                            <th class="col-md-2" style="text-align: center; background-color: #1d75b3; color: white;"><p id="lbImpositiva"></p></th>
-                            <th class="col-md-2" style="text-align: center; background-color: #00a198; color: white;"><p id="lbPAC"></p></th>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="col-md-5">
-                        <div class="row">
-                            <div class="col-md-6"><b>Código: </b> <i id="lbCodigo"></i></div>
-                            <div class="col-md-6"><b>Início: </b> <i id="lbInicio"></i></div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6"><b>Natureza: </b> <i id="lbNatureza"></i></div>
-                            <div class="col-md-6"><b>Conclusão: </b> <i id="lbTermino"></i></div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6"><b>Fase: </b> <i id="lbFase"></i></div>
-                            <div class="col-md-6"><b>Situação: </b> <i id="lbSituacao"></i></div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="row">
-                            <div class="col-md-2">Estudos</div>
-                            <div class="col-md-2">Planejamento</div>
-                            <div class="col-md-2">Projeto</div>
-                            <div class="col-md-2">Ambiental</div>
-                            <div class="col-md-2">Desapropriaçao</div>
-                            <div class="col-md-2">Reassentamento</div>
-                        </div>
-                        <br>
-                        <div class="row" style="text-align: center">
-                            <a href="#"> <span class="col-md-2 glyphicon glyphicon-info-sign"></span></a>
-                            <a href="#"><span class="col-md-2 glyphicon glyphicon-info-sign"></span></a>
-                            <a href="#"><span class="col-md-2 glyphicon glyphicon-info-sign"></span></a>
-                            <a href="#"><span class="col-md-2 glyphicon glyphicon-info-sign"></span></a>
-                            <a href="#"><span class="col-md-2 glyphicon glyphicon-info-sign"></span></a>
-                            <a href="#"> <span class="col-md-2 glyphicon glyphicon-info-sign"></span></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <br>
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="table-bordered" style="text-align: center;">
-                        <b>Comentários</b>
-                        <br>
-                        <i id="lbResumo"></i>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6" id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
-                        <div class="col-md-6" id="container2" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
-                    </div>
-                </div>
-            </div>
         </div>
-        <!-- /.col-lg-12 -->
     </div>
-</div>
-
-        <div id="demo" class="collapse">
-            Lorem ipsum dolor text....
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-bordered table-responsive">
+                <tr>
+                    <th class="col-md-4" style="text-align: center; background-color: #1d75b3; color: white;">
+                        <a href="#demo" data-target="#demo">
+                            <p id="lbLotes" style="color: white;"></p></a></th>
+                    <th class="col-md-4" style="text-align: center; background-color: #1d75b3; color: white;"><p id="lbKm"></p></th>
+                    <th class="col-md-2" style="text-align: center; background-color: #1d75b3; color: white;"><p id="lbImpositiva"></p></th>
+                    <th class="col-md-2" style="text-align: center; background-color: #00a198; color: white;"><p id="lbPAC"></p></th>
+                </tr>
+            </table>
         </div>
-
     </div>
-</div>
+    <div class="row">
+        <div class="col-md-12">
+
+                <div class="panel panel-default">
+
+                    <div class="panel-heading">
+                        <b></b>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="col-md-12">
+                                    <div class="panel panel-default">
+                                       <table class="table table-bordered">
+                                            <thead>
+                                            <tr>
+                                                <th colspan="4" style="text-align: center">Detalhes do empreendimento</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr class="success">
+                                                <td colspan="2"><b>Código: </b><font id="lbCodigo"></font> </b></td>
+                                                <td colspan="2"><b>Início: </b><font id="lbInicio"></font></td>
+                                            </tr>
+                                            <tr class="warning">
+                                                <td colspan="2"><b>Natureza:</b> <font id="lbNatureza"></font> </b></td>
+                                                <td colspan="2"><b>Conclusão: </b><font id="lbTermino"></font></td>
+                                            </tr>
+                                            <tr class="info">
+                                                <td colspan="2"><b>Fase: </b><font id="lbFase"></font> </b></td>
+                                                <td colspan="2"><b>Situação: </b><font id="lbSituacao"></font></td>
+
+                                            </tr>
+                                            </tbody>
+                                        </table>
+
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="panel panel-default">
+                                        <table class="table table-bordered">
+                                            <thead>
+                                            <tr>
+                                                <th colspan="6" style="text-align: center">Temáticas do empreendimento</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr>
+                                                <td style="text-align: center; font-size: 12px">Estudos</td>
+                                                <td style="text-align: center; font-size: 12px">Planejamento</td>
+                                                <td style="text-align: center; font-size: 12px">Projeto</td>
+                                                <td style="text-align: center; font-size: 12px">Ambiental</td>
+                                                <td style="text-align: center; font-size: 12px">Desapropriaçao</td>
+                                                <td style="text-align: center; font-size: 12px">Reassentamento</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="text-align: center"><a href="#"> <span class=" glyphicon glyphicon-info-sign"></span></a></td>
+                                                <td style="text-align: center"><a href="#"> <span class=" glyphicon glyphicon-info-sign"></span></a></td>
+                                                <td style="text-align: center"><a href="#"> <span class=" glyphicon glyphicon-info-sign"></span></a></td>
+                                                <td style="text-align: center"><a href="#"> <span class=" glyphicon glyphicon-info-sign"></span></a></td>
+                                                <td style="text-align: center"><a href="#"> <span class=" glyphicon glyphicon-info-sign"></span></a></td>
+                                                <td style="text-align: center"><a href="#"> <span class=" glyphicon glyphicon-info-sign"></span></a></td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading"><b>Comentários</b></div>
+                                        <div class="panel-body"><font id="lbResumo"></font></div>
+                                    </div>
+                                    <br><br>
+                                    <div class="row">
+
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="col-md-12" id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+                                <div class="col-md-12" id="container2" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <br>
+        <div class="row">
+
+        </div>
+    </div>
+
+
+
+
+
+
+
     <footer class="main-footer" style="text-align: center">
 
-        <strong>PEM © <?php echo date('Y'); ?>.</strong> DNIT - Departamento Nacional de Infraestrutura de Transportes. (Versão 1.0)
+        <strong>PEM © <?php echo date('Y'); ?>.</strong> DNIT - Departamento Nacional de Infraestrutura de Transportes. [Versão 1.0]
     </footer>
     <script src="js/funcoes_pem.js"></script>
 </body>

@@ -21,7 +21,7 @@ $(document).ready(function(){
 
 function dadosModal() {
     $.getJSON('conexao/consulta.php?opcao=modal', function (dados){
-        alert(dados.length);
+
         if (dados.length > 0){
             var option = '';
             $.each(dados, function(i, obj){

@@ -41,6 +41,7 @@ if (! empty($empreendimento)){
 
 function getEmpreendimentos($mod, $ref, $uf){
     $pdo = Conectar();
+
     $sql = "select distinct(TITLE) as empreendimento
             from LISTA_SP_AD.dbo.TB_PWA_DPP_CADASTRO_EMPREENDIMENTOS 
             where MODAL_EMPREENDIMENTO = '$mod'
@@ -60,7 +61,9 @@ function getModal(){
             order by MODAL_EMPREENDIMENTO asc';
     $stm = $pdo->prepare($sql);
     $stm->execute();
+
     echo json_encode($stm->fetchAll(PDO::FETCH_ASSOC));
+
     $pdo = null;
 }
 
