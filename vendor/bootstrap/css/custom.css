@@ -1,0 +1,34 @@
+.logo{
+    font-family: Arial;
+    font-style: italic;
+    font-weight: bold;
+    color: white !important;
+}
+
+.logo:hover{
+    font-family: Arial;
+    font-style: italic;
+    font-weight: bold;
+    color: #ececec !important;
+}
+.navbar-inverse{
+    background-color: #3c4b7e !important;
+}
+
+.container {
+    margin-top: 10px;
+    padding-right: 2px;
+    padding-left: 2px;
+    margin-right: auto;
+    margin-left: auto;
+}
+@media (min-width: 768px) {
+    .container {
+        width: 95%
+    }
+}
+@media (min-width: 992px) {
+    .container {
+        width: 95%
+    }
+}

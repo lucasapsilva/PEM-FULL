@@ -1,6 +1,4 @@
 <?php
-
-
 function Conectar(){
     try {
         $host = "192.168.10.100";
