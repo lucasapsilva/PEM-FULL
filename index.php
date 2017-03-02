@@ -17,11 +17,10 @@
             margin-bottom: 0;
             border-radius: 0;
         }
-
         /* Add a gray background color and some padding to the footer */
         footer {
             background-color: #f2f2f2;
-            padding: 25px;
+            padding: 10px;
         }
     </style>
 </head>
@@ -39,7 +38,6 @@
         </div>
     </div>
 </nav>
-
 <div class="jumbotron">
     <div class="box-body">
         <div class="row">
@@ -75,7 +73,9 @@
         <div class="row">
             <table class="table table-bordered">
                 <tr>
-                    <th class="col-md-4" style="text-align: center; background-color: #1d75b3; color: white;"><p id="lbLotes"></p></th>
+                    <th class="col-md-4" style="text-align: center; background-color: #1d75b3; color: white;">
+                        <a href="#demo" data-target="#demo">
+                            <p id="lbLotes" style="color: white;"></p></a></th>
                     <th class="col-md-4" style="text-align: center; background-color: #1d75b3; color: white;"><p id="lbKm"></p></th>
                     <th class="col-md-2" style="text-align: center; background-color: #1d75b3; color: white;"><p id="lbImpositiva"></p></th>
                     <th class="col-md-2" style="text-align: center; background-color: #00a198; color: white;"><p id="lbPAC"></p></th>
@@ -107,7 +107,7 @@
                     <div class="col-md-2">Reassentamento</div>
                 </div>
                 <br>
-                <div class="row">
+                <div class="row" style="text-align: center">
                     <a href="#"> <span class="col-md-2 glyphicon glyphicon-info-sign"></span></a>
                     <a href="#"><span class="col-md-2 glyphicon glyphicon-info-sign"></span></a>
                     <a href="#"><span class="col-md-2 glyphicon glyphicon-info-sign"></span></a>
@@ -128,12 +128,11 @@
             <div class="col-md-6" id="container2" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
         </div>
     </div>
+    <div id="demo" class="collapse">
+        Lorem ipsum dolor text....
+    </div>
+
 </div>
-
-
-
-
-
 <footer class="main-footer">
     <div class="pull-right hidden-xs">
         <b>Versão</b> 1.0

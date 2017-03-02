@@ -107,12 +107,10 @@ function dadosEmpreendimento() {
                 dados[0].MEDIDA_IMPOSITIVA = 'MEDIDA IMPOSITIVA';
             else
                 dados[0].MEDIDA_IMPOSITIVA = 'SEM MEDIDA IMPOSITIVA';
-
             if  (dados[0].PAC == "Sim")
                 dados[0].PAC = 'CARTEIRA PAC';
             else
                 dados[0].PAC = 'CARTEIRA DEMAIS';
-
             $("#lbKm").html(dados[0].KM);
             $("#lbLotes").html(dados[0].QTD_LOTES);
             $("#lbImpositiva").html(dados[0].MEDIDA_IMPOSITIVA);
@@ -124,11 +122,30 @@ function dadosEmpreendimento() {
             $("#lbFase").html(dados[0].FASE);
             $("#lbSituacao").html(dados[0].SITUACAO);
             $("#lbResumo").html(dados[0].RESUMO);
-            var valor_gepac = dados[0].VALOR_GEPAC;
-            var valor_contrato = dados[0].CONTRATO_OBRA;
-            var valor_medido = dados[0].VALOR_MEDIDO;
-            var valor_empenhado = dados[0].VALOR_EMPENHADO;
-            var saldo_empenhar = dados[0].SALDO_A_EMPENHAR;
+            var valor_gepac;
+            if (dados[0].VALOR_GEPAC > 0)
+                valor_gepac = dados[0].VALOR_GEPAC;
+            else
+                valor_gepac = 0;
+            var valor_contrato;
+            if (dados[0].CONTRATO_OBRA > 0)
+                valor_contrato = dados[0].CONTRATO_OBRA;
+            else
+                valor_contrato = 0;
+            var valor_medido;
+            if (dados[0].VALOR_MEDIDO > 0)
+                valor_medido = dados[0].VALOR_MEDIDO;
+            else
+                valor_medido = 0;
+            var valor_empenhado;
+            if (dados[0].VALOR_EMPENHADO > 0)
+                valor_empenhado = dados[0].VALOR_EMPENHADO;
+            else valor_empenhado = 0;
+            var saldo_empenhar;
+            if (dados[0].SALDO_A_EMPENHAR > 0)
+                saldo_empenhar = dados[0].SALDO_A_EMPENHAR;
+            else
+                saldo_empenhar = 0;
             graficoBarra(valor_gepac, valor_contrato);
             graphPie (valor_medido,valor_empenhado,saldo_empenhar);
         }
