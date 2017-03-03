@@ -40,6 +40,7 @@
             padding: 10px;
         }
     </style>
+    <link rel="icon" href="vendor/bootstrap/img/icon.png" type="image/x-icon" />
 </head>
 <body>
 
@@ -104,12 +105,13 @@
         <div class="col-md-12">
             <table class="table table-bordered table-responsive">
                 <tr>
-                    <th class="col-md-4" style="text-align: center; background-color: #1d75b3; color: white;">
-                        <a href="#" data-toggle="modal" data-target="#modalLotes">
-                            <p id="lbLotes" style="color: white;"></p></a></th>
-                    <th class="col-md-4" style="text-align: center; background-color: #1d75b3; color: white;"><p id="lbKm"></p></th>
-                    <th class="col-md-2" style="text-align: center; background-color: #1d75b3; color: white;"><p id="lbImpositiva"></p></th>
-                    <th class="col-md-2" style="text-align: center; background-color: #00a198; color: white;"><p id="lbPAC"></p></th>
+                    <th class="col-md-4 btn-primary" data-toggle="modal" data-target="#modalLotes" style="text-align: center; cursor: pointer;">
+                        <a href="#demo" data-target="#demo" >
+                            <p id="lbLotes"</p></a>
+                    </th>
+                    <th class="col-md-2 btn-primary" style="text-align: center"><p id="lbKm"></p></th>
+                    <th class="col-md-4 btn-primary" style="text-align: center"><p id="lbImpositiva"></p></th>
+                    <th class="col-md-2 btn-success" style="text-align: center"><p id="lbPAC"></p></th>
                 </tr>
             </table>
         </div>
