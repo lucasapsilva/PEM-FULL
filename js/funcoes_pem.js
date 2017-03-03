@@ -157,9 +157,24 @@ function dadosEmpreendimento() {
 function dadosLotes() {
     var pais = $('#cmbPais').val();
     $.getJSON('conexao/consulta.php?opcao=lotes&valor='+pais, function (dados){
-        debugger;
         if (dados.length > 0){
-            $("#lbLote").html(dados[0].LOTE);
+            for(i = 0; i <= dados.length; i++) {
+                $("#lbLote").html(dados[i].LOTE);
+                $("#lbContrato").html(dados[i].LOTE_CONTRATO);
+                $("#lbSituacaoContrato").html(dados[i].LOTE_SITUACAO_CONTRATO);
+                $("#lbEmpresa").html(dados[i].LOTE_EMPRESA);
+                $("#lbDataInicio").html(dados[i].LOTE_DATA_INICIO);
+                $("#lbDataTermino").html(dados[i].LOTE_DATA_TERMINO);
+
+                $("#lbValorInicial").html(dados[i].LOTE_VALOR_INICIAL);
+                $("#lbValorPIAR").html(dados[i].LOTE_VALOR_PIAR);
+                $("#lbEmpenhoInicial").html(dados[i].LOTE_EMPENHO_INICIAL);
+                $("#lbEmpenhoConsumido").html(dados[i].LOTE_EMPENHO_CONSUMIDO);
+                $("#lbValorTotalMedicao").html(dados[i].LOTE_VALOR_TOTAL_MEDICAO);
+                $("#lbValorSaldo").html(dados[i].LOTE_VALOR_SALDO);
+                $("#lbMedicaoAtestada").html(dados[i].LOTE_MEDICAO_ATESTADA);
+
+            }
         }
     })
 }

@@ -237,8 +237,21 @@
                                 <!-- Tab panes -->
                                 <div class="tab-content">
                                     <div class="tab-pane fade in active" id="home-pills">
-                                        <h4><font id="lbLote"></font></h4>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                                        <h4><label>Lote: </label><font id="lbLote"></font><br>
+                                            <label>Contrato: </label><font id="lbContrato"></font><br>
+                                            <label>Situação Contrato: </label><font id="lbSituacaoContrato"></font><br>
+                                            <label>Empresa Contratada: </label><font id="lbEmpresa"></font><br>
+                                            <label>Data de Início: </label><font id="lbDataInicio"></font><br>
+                                            <label>Data Termino: </label><font id="lbDataTermino"></font>
+                                            <label>Valor Inicial: </label><font id="lbValorInicial"></font><br>
+                                            <label>Valor Inicial + Aditivos + Reajuste: </label><font id="lbValorPIAR"></font><br>
+                                            <label>Valor Empenho Inicial: </label><font id="lbEmpenhoInicial"></font><br>
+                                            <label>Valor Empenho Consumido: </label><font id="lbEmpenhoConsumido"></font><br>
+                                            <label>Valor Total de Medições + Reajustes: </label><font id="lbValorTotalMedicao"></font><br>
+                                            <label>Valor do Saldo: </label><font id="lbValorSaldo"></font><br>
+                                            <label>Valor Atestado da Medição: </label><font id="lbMedicaoAtestada"></font>
+                                        </h4>
+
                                     </div>
                                     <div class="tab-pane fade" id="profile-pills">
                                         <h4>Profile Tab</h4>

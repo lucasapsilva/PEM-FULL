@@ -148,43 +148,48 @@ group by empreendimentos.KM_INICIAL_EMPREENDI,
 function getLotes($val){
 
     $pdo = Conectar();
-    $sql = "select lotes.TITLE as lote,
-       lotes.NUMERO_CONTRATO as contrato,
-       contrato.ds_fas_contrato,
-       contrato.NO_EMPRESA as empresa,
-       CONVERT(varchar, contrato.DT_INICIO,103) data_inicio,
-       CONVERT(varchar, contrato.DT_TER_ATZ,103) data_termino,
-       contrato.Valor_Inicial as valor_inicial,
-       contrato.Valor_Inicial_Adit_Rejustes valor_piar,
-       sum(empenho.VLR_EMPENHO_INICIAL) as empenho_inicial,
-       lotes.VALOR_EMPANHADO_LOTE as empenho_consumido,
-       cast(sum(medicao.VLR_MEDICAO_PIR) as numeric(14,2)) as valor_total_medicao,
-       contrato.Valor_do_Saldo,
-       contrato.Valor_Medicao_PI_R as medicao_atestada
-from LISTA_SP_AD.dbo.TB_PWA_DPP_CADASTRO_LOTES lotes,
-     LISTA_SP_AD.dbo.TB_PWA_DPP_CADASTRO_EMPREENDIMENTOS empreendimentos,
-     SIMDNIT.dbo.Dados_Contrato contrato,
-     SIMDNIT.dbo.Dados_Empenho empenho,
-     SIMDNIT.dbo.Dados_Medicao medicao
-where empreendimentos.TITLE = lotes.EMPREENDIMENTO
-and   contrato.NU_CON_FORMATADO = lotes.NUMERO_CONTRATO
-and   empenho.NU_CON_FORMATADO = contrato.NU_CON_FORMATADO
-and   medicao.NU_CON_FORMATADO = contrato.NU_CON_FORMATADO
-and   lotes.EMPREENDIMENTO = '$val'
-group by lotes.TITLE,
-         lotes.NUMERO_CONTRATO,
-         contrato.ds_fas_contrato,
-         contrato.NO_EMPRESA,
-         contrato.DT_INICIO,
-         contrato.DT_TER_ATZ,
-         contrato.Valor_Inicial,
-         contrato.Valor_Inicial_Adit_Rejustes,
-         lotes.VALOR_EMPANHADO_LOTE,
-         contrato.Valor_do_Saldo,
-         contrato.Valor_Medicao_PI_R";
+    $sql = "SELECT lotes.TITLE AS lote
+      ,lotes.NUMERO_CONTRATO AS lote_contrato
+      ,contrato.ds_fas_contrato lote_situacao_contrato
+      ,contrato.NO_EMPRESA AS lote_empresa
+      ,CONVERT(VARCHAR, contrato.DT_INICIO, 103) lote_data_inicio
+      ,CONVERT(VARCHAR, contrato.DT_TER_ATZ, 103) lote_data_termino
+      ,contrato.Valor_Inicial AS lote_valor_inicial
+      ,contrato.Valor_Inicial_Adit_Rejustes lote_valor_piar
+      ,sum(empenho.VLR_EMPENHO_INICIAL) AS lote_empenho_inicial
+      ,lotes.VALOR_EMPANHADO_LOTE AS lote_empenho_consumido
+      ,cast(sum(medicao.VLR_MEDICAO_PIR) AS NUMERIC(14, 2)) AS lote_valor_total_medicao
+      ,contrato.Valor_do_Saldo AS lote_valor_saldo
+      ,contrato.Valor_Medicao_PI_R AS lote_medicao_atestada
+FROM LISTA_SP_AD.dbo.TB_PWA_DPP_CADASTRO_LOTES lotes
+LEFT JOIN (
+      SELECT *
+      FROM SIMDNIT.dbo.Dados_Contrato
+      ) contrato ON contrato.NU_CON_FORMATADO = lotes.NUMERO_CONTRATO
+LEFT JOIN (
+      SELECT *
+      FROM SIMDNIT.dbo.Dados_Empenho
+      ) empenho ON empenho.NU_CON_FORMATADO = lotes.NUMERO_CONTRATO
+LEFT JOIN (
+      SELECT *
+      FROM SIMDNIT.dbo.Dados_Medicao
+      ) medicao ON medicao.NU_CON_FORMATADO = lotes.NUMERO_CONTRATO
+      ,LISTA_SP_AD.dbo.TB_PWA_DPP_CADASTRO_EMPREENDIMENTOS empreendimentos
+WHERE empreendimentos.TITLE = lotes.EMPREENDIMENTO
+      AND lotes.EMPREENDIMENTO = '$val'
+GROUP BY lotes.TITLE
+      ,lotes.NUMERO_CONTRATO
+      ,contrato.ds_fas_contrato
+      ,contrato.NO_EMPRESA
+      ,contrato.DT_INICIO
+      ,contrato.DT_TER_ATZ
+      ,contrato.Valor_Inicial
+      ,contrato.Valor_Inicial_Adit_Rejustes
+      ,lotes.VALOR_EMPANHADO_LOTE
+      ,contrato.Valor_do_Saldo
+      ,contrato.Valor_Medicao_PI_R";
     //var_dump($sql);exit();
     $stm = $pdo->prepare($sql);
-    var_dump($stm);
     $stm->bindValue(1, $val);
     $stm->execute();
     echo json_encode($stm->fetchAll(PDO::FETCH_ASSOC));
