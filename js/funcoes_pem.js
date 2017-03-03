@@ -149,9 +149,21 @@ function dadosEmpreendimento() {
                 saldo_empenhar = 0;
             graficoBarra(valor_gepac, valor_contrato);
             graphPie (valor_medido,valor_empenhado,saldo_empenhar);
+            dadosLotes()
         }
     })
 }
+
+function dadosLotes() {
+    var pais = $('#cmbPais').val();
+    $.getJSON('conexao/consulta.php?opcao=lotes&valor='+pais, function (dados){
+        debugger;
+        if (dados.length > 0){
+            $("#lbLote").html(dados[0].LOTE);
+        }
+    })
+}
+
 
 function Reset(){
     $('#cmbPais').empty().append('<option>Carregar Países</option>>');
