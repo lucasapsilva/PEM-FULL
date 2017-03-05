@@ -164,7 +164,6 @@
                                         </thead>
                                         <tbody>
                                         <tr>
-                                            <td style="text-align: center; font-size: 12px">Estudos</td>
                                             <td style="text-align: center; font-size: 12px">Planejamento</td>
                                             <td style="text-align: center; font-size: 12px">Projeto</td>
                                             <td style="text-align: center; font-size: 12px">Ambiental</td>
@@ -172,7 +171,7 @@
                                             <td style="text-align: center; font-size: 12px">Reassentamento</td>
                                         </tr>
                                         <tr>
-                                            <td style="text-align: center"><a href="#"> <span class=" glyphicon glyphicon-info-sign"></span></a></td>
+
                                             <td style="text-align: center"><a href="#"> <span class=" glyphicon glyphicon-info-sign"></span></a></td>
                                             <td style="text-align: center"><a href="#"> <span class=" glyphicon glyphicon-info-sign"></span></a></td>
                                             <td style="text-align: center"><a href="#"> <span class=" glyphicon glyphicon-info-sign"></span></a></td>
@@ -185,14 +184,17 @@
                                 </div>
                             </div>
                             <div class="col-md-12">
-                                <div class="panel panel-default">
-                                    <div class="panel-heading"><b>Comentários</b></div>
-                                    <div class="panel-body"><font id="lbResumo"></font></div>
-                                </div>
+                                <div  id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div><br><br>
+
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="col-md-12" id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div><br><br>
+                            <div class="col-md-12">
+                                <div class="panel panel-default" style="height: 269px;">
+                                    <div class="panel-heading"><b>Comentários do Empreendiimento</b></div>
+                                    <div class="panel-body"><font id="lbResumo"></font></div>
+                                </div>
+                            </div>
                             <div class="col-md-12" id="container2" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
                         </div>
 
@@ -200,13 +202,7 @@
                 </div>
             </div>
         </div>
-
     </div>
-    <br>
-    <div class="row">
-
-    </div>
-
     <div id="modalLotes" class="modal fade" role="dialog" data-backdrop="static">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -216,58 +212,80 @@
                 </div>
                 <div class="modal-body">
                     <div class="row">
+                        <div class="col-md-5">
+                            <div class="form-group">
+                                <label class="form-inline">Lote</label>
+                                <select class="form-control select2" id="cmbLotes" style="width: 100%;">
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
                         <div class="panel panel-default">
-                            <div class="panel-heading">
-                                Detalhamento Lotes
-                            </div>
-                            <!-- /.panel-heading -->
-                            <div class="panel-body">
-                                <!-- Nav tabs -->
-                                <ul class="nav nav-pills">
-                                    <li class="active"><a href="#home-pills" data-toggle="tab">Home</a>
-                                    </li>
-                                    <li><a href="#profile-pills" data-toggle="tab">Profile</a>
-                                    </li>
-                                    <li><a href="#messages-pills" data-toggle="tab">Messages</a>
-                                    </li>
-                                    <li><a href="#settings-pills" data-toggle="tab">Settings</a>
-                                    </li>
-                                </ul>
+                            <table class="table table-bordered">
+                                <thead>
+                                <tr>
+                                    <th colspan="6" style="text-align: center">Temáticas dos Lotes</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td style="text-align: center; font-size: 12px">Planejamento</td>
+                                    <td style="text-align: center; font-size: 12px">Projeto</td>
+                                    <td style="text-align: center; font-size: 12px">Ambiental</td>
+                                    <td style="text-align: center; font-size: 12px">Desapropriaçao</td>
+                                    <td style="text-align: center; font-size: 12px">Reassentamento</td>
+                                </tr>
+                                <tr>
 
-                                <!-- Tab panes -->
-                                <div class="tab-content">
-                                    <div class="tab-pane fade in active" id="home-pills">
-                                        <h4><label>Lote: </label><font id="lbLote"></font><br>
-                                            <label>Contrato: </label><font id="lbContrato"></font><br>
-                                            <label>Situação Contrato: </label><font id="lbSituacaoContrato"></font><br>
-                                            <label>Empresa Contratada: </label><font id="lbEmpresa"></font><br>
-                                            <label>Data de Início: </label><font id="lbDataInicio"></font><br>
-                                            <label>Data Termino: </label><font id="lbDataTermino"></font>
-                                            <label>Valor Inicial: </label><font id="lbValorInicial"></font><br>
-                                            <label>Valor Inicial + Aditivos + Reajuste: </label><font id="lbValorPIAR"></font><br>
-                                            <label>Valor Empenho Inicial: </label><font id="lbEmpenhoInicial"></font><br>
-                                            <label>Valor Empenho Consumido: </label><font id="lbEmpenhoConsumido"></font><br>
-                                            <label>Valor Total de Medições + Reajustes: </label><font id="lbValorTotalMedicao"></font><br>
-                                            <label>Valor do Saldo: </label><font id="lbValorSaldo"></font><br>
-                                            <label>Valor Atestado da Medição: </label><font id="lbMedicaoAtestada"></font>
-                                        </h4>
-
-                                    </div>
-                                    <div class="tab-pane fade" id="profile-pills">
-                                        <h4>Profile Tab</h4>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                                    </div>
-                                    <div class="tab-pane fade" id="messages-pills">
-                                        <h4>Messages Tab</h4>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                                    </div>
-                                    <div class="tab-pane fade" id="settings-pills">
-                                        <h4>Settings Tab</h4>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- /.panel-body -->
+                                    <td style="text-align: center"><a href="#"> <span class=" glyphicon glyphicon-info-sign"></span></a></td>
+                                    <td style="text-align: center"><a href="#"> <span class=" glyphicon glyphicon-info-sign"></span></a></td>
+                                    <td style="text-align: center"><a href="#"> <span class=" glyphicon glyphicon-info-sign"></span></a></td>
+                                    <td style="text-align: center"><a href="#"> <span class=" glyphicon glyphicon-info-sign"></span></a></td>
+                                    <td style="text-align: center"><a href="#"> <span class=" glyphicon glyphicon-info-sign"></span></a></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="panel panel-default">
+                            <table class="table table-bordered">
+                                <thead>
+                                <tr>
+                                    <th colspan="4" style="text-align: center">Detalhes do lote</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr class="success">
+                                    <td colspan="2"><b>Lote: </b><font id="lbLote"></font> </b></td>
+                                    <td colspan="2"><b>Contrato: </b><font id="lbContrato"></font></td>
+                                </tr>
+                                <tr class="warning">
+                                    <td colspan="2"><b>Situação Contrato:</b> <font id="lbSituacaoContrato"></font> </b></td>
+                                    <td colspan="2"><b>Empresa Contratada: </b><font id="lbEmpresa"></font></td>
+                                </tr>
+                                <tr class="info">
+                                    <td colspan="2"><b>Data de Início: </b><font id="lbDataInicio"></font> </b></td>
+                                    <td colspan="2"><b>Data Termino: </b><font id="lbDataTermino"></font></td>
+                                </tr>
+                                <tr class="success">
+                                    <td colspan="2"><b>Valor Inicial: </b><font id="lbValorInicial"></font> </b></td>
+                                    <td colspan="2"><b>Valor Inicial + Aditivos + Reajuste: </b><font id="lbValorPIAR"></font></td>
+                                </tr>
+                                <tr class="warning">
+                                    <td colspan="2"><b>Valor Empenho Inicial:</b> <font id="lbEmpenhoInicial"></font> </b></td>
+                                    <td colspan="2"><b>Valor Empenho Consumido: </b><font id="lbEmpenhoConsumido"></font></td>
+                                </tr>
+                                <tr class="info">
+                                    <td colspan="2"><b>Valor Total de Medições + Reajustes: </b><font id="lbValorTotalMedicao"></font> </b></td>
+                                    <td colspan="2"><b>Valor do Saldo: </b><font id="lbValorSaldo"></font></td>
+                                </tr>
+                                <tr class="success">
+                                    <td colspan="2"><b>Valor Atestado da Medição: </b><font id="lbMedicaoAtestada"></font> </b></td>
+                                </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>

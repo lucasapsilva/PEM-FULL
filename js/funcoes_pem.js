@@ -14,7 +14,14 @@ $(document).ready(function(){
 
     $('#cmbPais').change(function(e){
         dadosEmpreendimento();
+
     });
+    $('#cmbLotes').change(function(e){
+        dadosLotes();
+
+    });
+
+
 
 });
 
@@ -86,6 +93,7 @@ function createDropdownListEmprendimentos() {
             });
             $('#cmbPais').html(option);
             dadosEmpreendimento();
+            dadosLote();
         }else{
             Reset();
             $('#mensagem').html('<span class="mensagem">Não foram encontrados paises!</span>');
@@ -93,6 +101,23 @@ function createDropdownListEmprendimentos() {
     });
 }
 
+
+function dadosLote() {
+    var empreendimento = $('#cmbPais').val();
+    $.getJSON('conexao/consulta.php?opcao=lote&valor='+empreendimento, function (dados){
+        if (dados.length > 0){
+            var option = '';
+            $.each(dados, function(i, obj){
+                option += '<option value="'+obj.LOTE+'">'+obj.LOTE+'</option>';
+            });
+            $('#cmbLotes').html(option);
+            dadosLotes();
+        }else{
+            Reset();
+            $('#mensagem').html('<span class="mensagem">Não foram encontrados Lotes!</span>');
+        }
+    })
+}
 
 
 function dadosEmpreendimento() {
@@ -149,32 +174,28 @@ function dadosEmpreendimento() {
                 saldo_empenhar = 0;
             graficoBarra(valor_gepac, valor_contrato);
             graphPie (valor_medido,valor_empenhado,saldo_empenhar);
-            dadosLotes()
         }
     })
 }
 
 function dadosLotes() {
-    var pais = $('#cmbPais').val();
-    $.getJSON('conexao/consulta.php?opcao=lotes&valor='+pais, function (dados){
+    var empreendimento = $('#cmbPais').val();
+    var lote = $('#cmbLotes').val();
+    $.getJSON('conexao/consulta.php?opcao=lotes&valor='+empreendimento+'&lote='+lote, function (dados){
         if (dados.length > 0){
-            for(i = 0; i <= dados.length; i++) {
-                $("#lbLote").html(dados[i].LOTE);
-                $("#lbContrato").html(dados[i].LOTE_CONTRATO);
-                $("#lbSituacaoContrato").html(dados[i].LOTE_SITUACAO_CONTRATO);
-                $("#lbEmpresa").html(dados[i].LOTE_EMPRESA);
-                $("#lbDataInicio").html(dados[i].LOTE_DATA_INICIO);
-                $("#lbDataTermino").html(dados[i].LOTE_DATA_TERMINO);
-
-                $("#lbValorInicial").html(dados[i].LOTE_VALOR_INICIAL);
-                $("#lbValorPIAR").html(dados[i].LOTE_VALOR_PIAR);
-                $("#lbEmpenhoInicial").html(dados[i].LOTE_EMPENHO_INICIAL);
-                $("#lbEmpenhoConsumido").html(dados[i].LOTE_EMPENHO_CONSUMIDO);
-                $("#lbValorTotalMedicao").html(dados[i].LOTE_VALOR_TOTAL_MEDICAO);
-                $("#lbValorSaldo").html(dados[i].LOTE_VALOR_SALDO);
-                $("#lbMedicaoAtestada").html(dados[i].LOTE_MEDICAO_ATESTADA);
-
-            }
+            $("#lbLote").html(dados[0].LOTE);
+            $("#lbContrato").html(dados[0].LOTE_CONTRATO);
+            $("#lbSituacaoContrato").html(dados[0].LOTE_SITUACAO_CONTRATO);
+            $("#lbEmpresa").html(dados[0].LOTE_EMPRESA);
+            $("#lbDataInicio").html(dados[0].LOTE_DATA_INICIO);
+            $("#lbDataTermino").html(dados[0].LOTE_DATA_TERMINO);
+            $("#lbValorInicial").html('R$ ' + moeda(dados[0].LOTE_VALOR_INICIAL,2,',','.'));
+            $("#lbValorPIAR").html('R$ ' + moeda(dados[0].LOTE_VALOR_PIAR,2,',','.'));
+            $("#lbEmpenhoInicial").html('R$ ' + moeda(dados[0].LOTE_EMPENHO_INICIAL,2,',','.'));
+            $("#lbEmpenhoConsumido").html('R$ ' + moeda(dados[0].LOTE_EMPENHO_CONSUMIDO,2,',','.'));
+            $("#lbValorTotalMedicao").html('R$ ' + moeda(dados[0].LOTE_VALOR_TOTAL_MEDICAO,2,',','.'));
+            $("#lbValorSaldo").html('R$ ' + moeda(dados[0].LOTE_VALOR_SALDO,2,',','.'));
+            $("#lbMedicaoAtestada").html('R$ ' + moeda(dados[0].LOTE_MEDICAO_ATESTADA,2,',','.'));
         }
     })
 }
@@ -303,3 +324,36 @@ function graphPie (valor_medido,valor_empenhado,saldo_empenhar) {
         }]
     });
 };
+
+
+function moeda(valor, casas, separdor_decimal, separador_milhar){
+    var valor_total = parseInt(valor * (Math.pow(10,casas)));
+    var inteiros =  parseInt(parseInt(valor * (Math.pow(10,casas))) / parseFloat(Math.pow(10,casas)));
+    var centavos = parseInt(parseInt(valor * (Math.pow(10,casas))) % parseFloat(Math.pow(10,casas)));
+    if(centavos%10 == 0 && centavos+"".length<2 ){
+        centavos = centavos+"0";
+    }else if(centavos<10){
+        centavos = "0"+centavos;
+    }
+
+    var milhares = parseInt(inteiros/1000);
+    inteiros = inteiros % 1000;
+
+    var retorno = "";
+
+    if(milhares>0){
+        retorno = milhares+""+separador_milhar+""+retorno;
+        if(inteiros == 0){
+            inteiros = "000";
+        } else if(inteiros < 10){
+            inteiros = "00"+inteiros;
+        } else if(inteiros < 100){
+            inteiros = "0"+inteiros;
+        }
+    }
+    retorno += inteiros+""+separdor_decimal+""+centavos;
+
+
+    return retorno;
+
+}

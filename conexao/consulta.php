@@ -5,6 +5,7 @@ $valor = isset($_GET['valor']) ? $_GET['valor'] : '';
 $modal = isset($_GET['modal']) ? $_GET['modal'] : '';
 $regiao = isset($_GET['regiao']) ? $_GET['regiao'] : '';
 $uf = isset($_GET['uf']) ? $_GET['uf'] : '';
+$lote = isset($_GET['lote']) ? $_GET['lote'] : '';
 
 if (! empty($empreendimento)){
     switch ($empreendimento)
@@ -27,7 +28,13 @@ if (! empty($empreendimento)){
 
         case 'lotes':
         {
-            echo getLotes($valor);
+            echo getLotes($valor, $lote);
+            break;
+        }
+
+        case 'lote':
+        {
+            echo getLote($valor);
             break;
         }
 
@@ -79,6 +86,18 @@ function getRegiao($val){
             from LISTA_SP_AD.dbo.TB_PWA_DPP_CADASTRO_EMPREENDIMENTOS
             where MODAL_EMPREENDIMENTO = '$val'
             order by REGIAO_EMPREENDIMENT asc";
+    $stm = $pdo->prepare($sql);
+    $stm->execute();
+    echo json_encode($stm->fetchAll(PDO::FETCH_ASSOC));
+    $pdo = null;
+}
+
+function getLote($val){
+    $pdo = Conectar();
+    $sql = "select distinct(TITLE) lote
+            from LISTA_SP_AD.dbo.TB_PWA_DPP_CADASTRO_LOTES
+            where EMPREENDIMENTO = '$val'
+            order by TITLE asc";
     $stm = $pdo->prepare($sql);
     $stm->execute();
     echo json_encode($stm->fetchAll(PDO::FETCH_ASSOC));
@@ -145,7 +164,7 @@ group by empreendimentos.KM_INICIAL_EMPREENDI,
     $pdo = null;
 }
 
-function getLotes($val){
+function getLotes($val, $lot){
 
     $pdo = Conectar();
     $sql = "SELECT lotes.TITLE AS lote
@@ -177,6 +196,7 @@ LEFT JOIN (
       ,LISTA_SP_AD.dbo.TB_PWA_DPP_CADASTRO_EMPREENDIMENTOS empreendimentos
 WHERE empreendimentos.TITLE = lotes.EMPREENDIMENTO
       AND lotes.EMPREENDIMENTO = '$val'
+      AND lotes.TITLE = '$lot'
 GROUP BY lotes.TITLE
       ,lotes.NUMERO_CONTRATO
       ,contrato.ds_fas_contrato
