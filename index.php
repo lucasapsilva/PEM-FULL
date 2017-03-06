@@ -103,6 +103,7 @@
     </div>
     <div class="row">
         <div class="col-md-12">
+
             <table class="table table-bordered table-responsive">
                 <tr>
                     <th class="col-md-4 btn-primary" data-toggle="modal" data-target="#modalLotes" style="text-align: center; cursor: pointer;">
@@ -147,12 +148,12 @@
                                         <tr class="info">
                                             <td colspan="2"><b>Fase: </b><font id="lbFase"></font> </b></td>
                                             <td colspan="2"><b>Situação: </b><font id="lbSituacao"></font></td>
-
                                         </tr>
                                         </tbody>
                                     </table>
 
                                 </div>
+
                             </div>
                             <div class="col-md-12">
                                 <div class="panel panel-default">
@@ -183,20 +184,18 @@
 
                                 </div>
                             </div>
-                            <div class="col-md-12">
-                                <div  id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div><br><br>
-
-                            </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="col-md-12">
-                                <div class="panel panel-default" style="height: 269px;">
-                                    <div class="panel-heading"><b>Comentários do Empreendiimento</b></div>
-                                    <div class="panel-body"><font id="lbResumo"></font></div>
-                                </div>
+                            <div class="panel panel-default" style="height: 269px;">
+                                <div class="panel-heading"><b>Comentários do Empreendiimento</b></div>
+                                <div class="panel-body"><font id="lbResumo"></font></div>
                             </div>
-                            <div class="col-md-12" id="container2" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
                         </div>
+                        <div class="col-md-12">
+                            <div class="col-md-6" id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+                            <div class="col-md-6" id="container2" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+                        </div>
+
 
                     </div>
                 </div>
@@ -206,89 +205,92 @@
     <div id="modalLotes" class="modal fade" role="dialog" data-backdrop="static">
         <div class="modal-dialog">
             <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Lotes</h4>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-md-5">
-                            <div class="form-group">
-                                <label class="form-inline">Lote</label>
-                                <select class="form-control select2" id="cmbLotes" style="width: 100%;">
-                                </select>
+
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Lotes</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-5">
+                                <div class="form-group">
+                                    <label class="form-inline">Lote</label>
+                                    <select class="form-control select2" id="cmbLotes" style="width: 100%;">
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+
+                            <div class="col-md-12">
+                                <table class="table table-bordered">
+                                    <thead>
+                                    <tr>
+                                        <th colspan="6" style="text-align: center">Temáticas dos Lotes</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td style="text-align: center; font-size: 12px">Planejamento</td>
+                                        <td style="text-align: center; font-size: 12px">Projeto</td>
+                                        <td style="text-align: center; font-size: 12px">Ambiental</td>
+                                        <td style="text-align: center; font-size: 12px">Desapropriaçao</td>
+                                        <td style="text-align: center; font-size: 12px">Reassentamento</td>
+                                    </tr>
+                                    <tr>
+
+                                        <td style="text-align: center"><a href="#"> <span class=" glyphicon glyphicon-info-sign"></span></a></td>
+                                        <td style="text-align: center"><a href="#"> <span class=" glyphicon glyphicon-info-sign"></span></a></td>
+                                        <td style="text-align: center"><a href="#"> <span class=" glyphicon glyphicon-info-sign"></span></a></td>
+                                        <td style="text-align: center"><a href="#"> <span class=" glyphicon glyphicon-info-sign"></span></a></td>
+                                        <td style="text-align: center"><a href="#"> <span class=" glyphicon glyphicon-info-sign"></span></a></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <table class="table table-bordered">
+                                    <thead>
+                                    <tr>
+                                        <th colspan="4" style="text-align: center">Detalhes do lote</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr class="success">
+                                        <td colspan="2"><b>Lote: </b><font id="lbLote"></font> </b></td>
+                                        <td colspan="2"><b>Contrato: </b><font id="lbContrato"></font></td>
+                                    </tr>
+                                    <tr class="warning">
+                                        <td colspan="2"><b>Situação Contrato:</b> <font id="lbSituacaoContrato"></font> </b></td>
+                                        <td colspan="2"><b>Empresa Contratada: </b><font id="lbEmpresa"></font></td>
+                                    </tr>
+                                    <tr class="info">
+                                        <td colspan="2"><b>Data de Início: </b><font id="lbDataInicio"></font> </b></td>
+                                        <td colspan="2"><b>Data Termino: </b><font id="lbDataTermino"></font></td>
+                                    </tr>
+                                    <tr class="success">
+                                        <td colspan="2"><b>Valor Inicial: </b><font id="lbValorInicial"></font> </b></td>
+                                        <td colspan="2"><b>Valor Inicial + Aditivos + Reajuste: </b><font id="lbValorPIAR"></font></td>
+                                    </tr>
+                                    <tr class="warning">
+                                        <td colspan="2"><b>Valor Empenho Inicial:</b> <font id="lbEmpenhoInicial"></font> </b></td>
+                                        <td colspan="2"><b>Valor Empenho Consumido: </b><font id="lbEmpenhoConsumido"></font></td>
+                                    </tr>
+                                    <tr class="info">
+                                        <td colspan="2"><b>Valor Total de Medições + Reajustes: </b><font id="lbValorTotalMedicao"></font> </b></td>
+                                        <td colspan="2"><b>Valor do Saldo: </b><font id="lbValorSaldo"></font></td>
+                                    </tr>
+                                    <tr class="success">
+                                        <td colspan="2"><b>Valor Atestado da Medição: </b><font id="lbMedicaoAtestada"></font> </b></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="panel panel-default">
-                            <table class="table table-bordered">
-                                <thead>
-                                <tr>
-                                    <th colspan="6" style="text-align: center">Temáticas dos Lotes</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td style="text-align: center; font-size: 12px">Planejamento</td>
-                                    <td style="text-align: center; font-size: 12px">Projeto</td>
-                                    <td style="text-align: center; font-size: 12px">Ambiental</td>
-                                    <td style="text-align: center; font-size: 12px">Desapropriaçao</td>
-                                    <td style="text-align: center; font-size: 12px">Reassentamento</td>
-                                </tr>
-                                <tr>
-
-                                    <td style="text-align: center"><a href="#"> <span class=" glyphicon glyphicon-info-sign"></span></a></td>
-                                    <td style="text-align: center"><a href="#"> <span class=" glyphicon glyphicon-info-sign"></span></a></td>
-                                    <td style="text-align: center"><a href="#"> <span class=" glyphicon glyphicon-info-sign"></span></a></td>
-                                    <td style="text-align: center"><a href="#"> <span class=" glyphicon glyphicon-info-sign"></span></a></td>
-                                    <td style="text-align: center"><a href="#"> <span class=" glyphicon glyphicon-info-sign"></span></a></td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="panel panel-default">
-                            <table class="table table-bordered">
-                                <thead>
-                                <tr>
-                                    <th colspan="4" style="text-align: center">Detalhes do lote</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr class="success">
-                                    <td colspan="2"><b>Lote: </b><font id="lbLote"></font> </b></td>
-                                    <td colspan="2"><b>Contrato: </b><font id="lbContrato"></font></td>
-                                </tr>
-                                <tr class="warning">
-                                    <td colspan="2"><b>Situação Contrato:</b> <font id="lbSituacaoContrato"></font> </b></td>
-                                    <td colspan="2"><b>Empresa Contratada: </b><font id="lbEmpresa"></font></td>
-                                </tr>
-                                <tr class="info">
-                                    <td colspan="2"><b>Data de Início: </b><font id="lbDataInicio"></font> </b></td>
-                                    <td colspan="2"><b>Data Termino: </b><font id="lbDataTermino"></font></td>
-                                </tr>
-                                <tr class="success">
-                                    <td colspan="2"><b>Valor Inicial: </b><font id="lbValorInicial"></font> </b></td>
-                                    <td colspan="2"><b>Valor Inicial + Aditivos + Reajuste: </b><font id="lbValorPIAR"></font></td>
-                                </tr>
-                                <tr class="warning">
-                                    <td colspan="2"><b>Valor Empenho Inicial:</b> <font id="lbEmpenhoInicial"></font> </b></td>
-                                    <td colspan="2"><b>Valor Empenho Consumido: </b><font id="lbEmpenhoConsumido"></font></td>
-                                </tr>
-                                <tr class="info">
-                                    <td colspan="2"><b>Valor Total de Medições + Reajustes: </b><font id="lbValorTotalMedicao"></font> </b></td>
-                                    <td colspan="2"><b>Valor do Saldo: </b><font id="lbValorSaldo"></font></td>
-                                </tr>
-                                <tr class="success">
-                                    <td colspan="2"><b>Valor Atestado da Medição: </b><font id="lbMedicaoAtestada"></font> </b></td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
